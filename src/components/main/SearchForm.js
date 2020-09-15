@@ -9,6 +9,11 @@ class SearchForm extends Component {
         this.props.searchMovie(e.target.value)
     }
 
+    handleOnSubmit = e => {
+        e.preventDefault();
+        this.props.fetchMovies(this.props.text);
+    }
+
 
     render() {
         return (
@@ -17,7 +22,7 @@ class SearchForm extends Component {
                     <h1 className="display-4 mb-3">
                         <FontAwesomeIcon icon={faSearch}/> Search for a movie ,TV series ..
                     </h1>
-                    <form id="searchForm" onSubmit={this.onSubmit}>
+                    <form id="searchForm" onSubmit={this.handleOnSubmit}>
                         <input
                             type="text"
                             className="form-control"
