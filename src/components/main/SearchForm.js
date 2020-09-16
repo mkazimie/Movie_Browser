@@ -12,6 +12,7 @@ class SearchForm extends Component {
     handleOnSubmit = e => {
         e.preventDefault();
         this.props.fetchMovies(this.props.text);
+        this.props.setLoading();
     }
 
 

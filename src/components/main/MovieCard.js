@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
+import {Link} from 'react-router-dom';
 
 class MovieCard extends Component {
     render() {
@@ -12,9 +13,9 @@ class MovieCard extends Component {
                     <h5 className="text-light card-title">
                         {movie.Title} &#8226; {movie.Year}
                     </h5>
-                    <a className="btn btn-primary" href="#">
+                    <Link className="btn btn-primary" to={'/movie/' + movie.imdbID}>
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
-                    </a>
+                    </Link>
                 </div>
             </div>
         );

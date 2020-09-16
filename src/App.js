@@ -1,17 +1,22 @@
 import React from 'react';
-import './css/App.css';
+import './static/App.css';
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import DisplayMovies from "./containers/main/Landing";
+import Landing from "./containers/main/Landing";
+import {HashRouter as Router, Route} from "react-router-dom";
+import SingleMovie from "./containers/main/SingleMovie";
 
 
 function App() {
     return (
-        <div className="App">
-            <Navbar/>
-            <DisplayMovies/>
-            <Footer/>
-        </div>
+        <Router>
+            <>
+                <Navbar/>
+                    <Route exact path={"/"} component={Landing}/>
+                    <Route exact path={"/movie/:id"} component={SingleMovie}/>
+                <Footer/>
+            </>
+        </Router>
     );
 }
 

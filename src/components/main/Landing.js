@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import SearchForm from "../../containers/main/SearchForm";
 import {Spinner} from "react-bootstrap";
-import DisplayMovies from "../../containers/main/MoviesContainer";
-import "../../css/App.css";
+import MoviesContainer from "../../containers/main/MoviesContainer";
+import "../../static/App.css";
 
 
 class Landing extends Component {
     render() {
-        const {loading} = this.props.loading;
+        const {loading} = this.props;
         return (
             <div className="container">
                 <SearchForm/>
@@ -15,7 +15,7 @@ class Landing extends Component {
                     <div className="spinner">
                         <Spinner animation="grow" variant="dark"/>
                     </div>
-                : <DisplayMovies/>}
+                : <MoviesContainer/>}
             </div>
         );
     }
