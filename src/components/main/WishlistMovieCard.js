@@ -1,20 +1,14 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faEye} from "@fortawesome/free-solid-svg-icons";
-import {Link} from 'react-router-dom';
+import {faChevronRight, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import RatingWidget from "../layout/RatingWidget";
-import "../../static/App.css"
 
-class MovieCard extends Component {
-
-    state = {
-        clicked: false,
-    }
+class WishlistMovieCard extends Component {
 
 
-    handleOnClick = (id) => {
-        this.setState(state => ({clicked: !state.clicked}))
-        this.props.addToWishlist(id);
+    handleOnClick = id => {
+        this.props.removeFromWishlist(id);
     }
 
     render() {
@@ -30,10 +24,9 @@ class MovieCard extends Component {
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
                     <RatingWidget/>
-                    <FontAwesomeIcon className="icon-event" icon={faEye}
-                                        size={'2x'}
-                                        color={(this.state.clicked) ? 'green' : 'white'}
-                                        onClick={() => this.handleOnClick(movie.imdbID)}/>
+                    <FontAwesomeIcon className="icon-event" icon={faEyeSlash}
+                                     size={'2x'} color={"#ff3333"}
+                                     onClick={() => this.handleOnClick(movie.imdbID)}/>
 
                 </div>
             </div>
@@ -42,4 +35,4 @@ class MovieCard extends Component {
 }
 
 
-export default MovieCard;
+export default WishlistMovieCard;

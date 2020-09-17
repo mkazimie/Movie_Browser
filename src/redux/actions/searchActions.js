@@ -23,6 +23,7 @@ const setLoading = () => ({
     type: LOADING
 })
 
+
 const fetchMovies = text => dispatch => {
     axios.get(`http://www.omdbapi.com/?apikey=${OMDb_API_KEY}&s=${text}`
     )
