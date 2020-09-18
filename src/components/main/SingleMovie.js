@@ -1,8 +1,26 @@
 import React, {Component} from 'react';
 import {Spinner} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import SimilarMoviesContainer from "../../containers/SimilarMoviesContainer";
 
 class SingleMovie extends Component {
+
+    constructor() {
+        super();
+        this.onClick = this.handleClick.bind(this);
+        this.state = {
+            fetchedSimilar: false
+        }
+    }
+
+
+    handleClick(event) {
+        const {id} = event.target;
+        let fragment = id.slice(0, 4);
+        console.log(fragment);
+        this.props.fetchSimilar(fragment);
+        this.setState(() => ({fetchedSimilar: true}))
+    }
 
     componentDidMount() {
         this.props.fetchMovie(this.props.match.params.id);
@@ -52,7 +70,7 @@ class SingleMovie extends Component {
                             {movie.Plot}
                             <hr/>
                             <a
-                                href={'https://www.imdb.com/title/' + movie.imdbID}
+                                href={`https://www.imdb.com/title/${movie.imdbID}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn btn-primary"
@@ -62,6 +80,7 @@ class SingleMovie extends Component {
                             <Link to={"/"} className="btn btn-default text-light">
                                 Go Back To Search
                             </Link>
+                            <button id={movie.Title} onClick={this.onClick}>Similar movies</button>
                         </div>
                     </div>
                 </div>
@@ -70,7 +89,12 @@ class SingleMovie extends Component {
         let content = loading ? <div className="spinner"><Spinner animation="grow" variant="dark"/></div>
             : movieInfo;
 
-        return <div>{content}</div>
+        return (
+            <>
+                <div>{content}</div>
+                {this.state.fetchedSimilar ? <SimilarMoviesContainer/> : null}
+            </>
+        )
     }
 
 }

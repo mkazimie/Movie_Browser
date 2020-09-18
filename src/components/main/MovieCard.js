@@ -34,7 +34,8 @@ class MovieCard extends Component {
                         {movie.Title} &#8226; {movie.Year}
                     </h5>
 
-                    <Link className="btn btn-primary" to={`/movie/${movie.imdbID}`}>
+                    <Link className="btn btn-primary" to={'/movie/' + movie.imdbID} target="_blank"
+                          rel="noopener noreferrer">
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
 

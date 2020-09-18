@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import SingleMovie from "../components/main/SingleMovie";
-import {fetchMovie, setLoading} from "../redux/actions/searchActions";
+import {fetchMovie, fetchSimilar, setLoading} from "../redux/actions/searchActions";
 
 const mapState = (state) => ({
     loading : state.movies.loading,
@@ -11,6 +11,7 @@ const mapState = (state) => ({
 const mapDispatch = (dispatch) => {
     return{
         fetchMovie : (id) => dispatch(fetchMovie(id)),
+        fetchSimilar : (title) => dispatch(fetchSimilar(title)),
         setLoading : () => dispatch(setLoading())
     }
 }
