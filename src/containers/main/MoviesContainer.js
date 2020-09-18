@@ -3,7 +3,7 @@ import MoviesContainer from "../../components/main/MoviesContainer";
 
 
 const mapState = state => ({
-    movies : state.movies.movies
+    movies : state.movies.movies,
 })
 
 

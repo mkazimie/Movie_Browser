@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import NoMovieFound from "./NoMovieFound";
-import WishlistMovieCard from "../../containers/main/WishlistMovieCard";
+import MovieCard from "../../containers/main/MovieCard";
 
 class WishlistMoviesContainer extends Component {
     render() {
@@ -8,7 +8,7 @@ class WishlistMoviesContainer extends Component {
         let content = '';
 
         if (wishlistMovies !== undefined){
-            content =  wishlistMovies.map((movie, index) => <WishlistMovieCard key={index} movie={movie}/>)
+            content =  wishlistMovies.map((movie, index) => <MovieCard key={index} movie={movie}/>)
         } else {
             return <NoMovieFound />
         }

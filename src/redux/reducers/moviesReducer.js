@@ -4,37 +4,41 @@ import {
     DISPLAY_MOVIES,
     LOADING,
     REMOVE_FROM_WISHLIST,
-    SEARCH_MOVIE
+    SEARCH_MOVIE,
 } from "../actions/actionTypes";
 
 const initialState = {
-    text : '',
+    text: '',
     movies: [],
-    loading : false,
+    loading: false,
     movie: [],
-    wishlist : []
+    wishlist: [],
 }
 
 const moviesReducer = (state = initialState, action) => {
     switch (action.type) {
+
         case SEARCH_MOVIE :
             return {
                 ...state,
-                text : action.payload,
-                loading : false
+                text: action.payload,
+                loading: false
             }
+
         case DISPLAY_MOVIES :
             return {
                 ...state,
                 movies: action.payload,
                 loading: false
             }
+
         case DISPLAY_MOVIE :
             return {
                 ...state,
-                movie : action.payload,
+                movie: action.payload,
                 loading: false
             }
+
         case ADD_TO_WISHLIST :
             const selectedMovie = state.movies.filter((movie) => {
                 if (movie.imdbID === action.payload) {
