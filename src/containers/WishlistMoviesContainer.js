@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import WishlistMoviesContainer from "../../components/main/WishlistMoviesContainer";
+import WishlistMoviesContainer from "../components/main/WishlistMoviesContainer";
 
 
 const mapState = state => ({

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import SearchForm from "../../containers/main/SearchForm";
+import SearchForm from "../../containers/SearchForm";
 import {Spinner} from "react-bootstrap";
-import MoviesContainer from "../../containers/main/MoviesContainer";
+import MoviesContainer from "../../containers/MoviesContainer";
 import "../../static/App.css";
 
 

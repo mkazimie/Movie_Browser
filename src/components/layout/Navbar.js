@@ -23,9 +23,9 @@ const Navbar = () => {
                         <NavLink exact className="navbar-brand text-lg brand-text px-2" activeStyle={active}  to={"/movies/wishlist"}>
                             Wishlist
                         </NavLink>
-                        <NavLink exact className="navbar-brand text-lg brand-text px-2" activeStyle={active}  to={"/movies/watched"}>
-                            Watched
-                        </NavLink>
+                        {/*<NavLink exact className="navbar-brand text-lg brand-text px-2" activeStyle={active}  to={"/movies/watched"}>*/}
+                        {/*    Watched*/}
+                        {/*</NavLink>*/}
                     </div>
                     <ul className="navbar-nav ml-auto text-light d-inline-block">
                         <li className="nav-item d-inline-block mr-4">

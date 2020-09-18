@@ -26,7 +26,6 @@ class MovieCard extends Component {
         }
 
 
-
         return (
             <div className="col-md-3 mb-5">
                 <div className="card card-body bg-dark text-center h-100">
@@ -39,20 +38,21 @@ class MovieCard extends Component {
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
 
+                    <div className="mt-2">
+                    {isOnWishlist ?
+                        <FontAwesomeIcon className="icon-event"
+                                         icon={faEyeSlash}
+                                         size={'2x'}
+                                         color={"#ff3333"}
+                                         onClick={() => this.handleOnClickRemoveWishlist(movie.imdbID)}/>
+                        :
+                        <FontAwesomeIcon className="icon-event"
+                                         icon={faEye}
+                                         size={'2x'}
+                                         color={'#00bfff'}
+                                         onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}/>}
+                    </div>
 
-                    {isOnWishlist ? <div className="text-center text-white"><FontAwesomeIcon className="icon-event"
-                                                                                             icon={faEyeSlash}
-                                                                                             size={'2x'}
-                                                                                             color={"#ff3333"}
-                                                                                             onClick={() => this.handleOnClickRemoveWishlist(movie.imdbID)}/>
-                            Remove from Wishlist</div>
-                        : <div className="text-center text-white display-flex"><FontAwesomeIcon className="icon-event"
-                                                                                                icon={faEye}
-                                                                                                size={'2x'}
-                                                                                                color={'#00bfff'}
-                                                                                                onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}/>Add
-                            to
-                            wishlist</div>}
                 </div>
             </div>
         );

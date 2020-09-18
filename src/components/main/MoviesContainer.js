@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import MovieCard from "../../containers/main/MovieCard"
+import MovieCard from "../../containers/MovieCard"
 import NoMovieFound from "./NoMovieFound";
 
 class MoviesContainer extends Component {

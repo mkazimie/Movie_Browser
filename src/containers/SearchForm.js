@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import SearchForm from "../../components/main/SearchForm";
-import {fetchMovies, searchMovie, setLoading} from "../../redux/actions/searchActions";
+import SearchForm from "../components/main/SearchForm";
+import {fetchMovies, searchMovie, setLoading} from "../redux/actions/searchActions";
 
 const mapDispatch = (dispatch) => {
     return {

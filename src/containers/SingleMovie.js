@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import SingleMovie from "../../components/main/SingleMovie";
-import {fetchMovie, setLoading} from "../../redux/actions/searchActions";
+import SingleMovie from "../components/main/SingleMovie";
+import {fetchMovie, setLoading} from "../redux/actions/searchActions";
 
 const mapState = (state) => ({
     loading : state.movies.loading,

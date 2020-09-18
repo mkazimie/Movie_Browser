@@ -1,4 +1,4 @@
-import Landing from "../../components/main/Landing";
+import Landing from "../components/main/Landing";
 import {connect} from "react-redux";
 
 const mapState = (state) => ({
