@@ -18,7 +18,7 @@ function App() {
                     <Route exact path={"/"} component={Landing}/>
                     <Route exact path={"/movie/:id"} component={SingleMovie}/>
                     <Route exact path={"/movies/wishlist"} component={WishlistMoviesContainer}/>
-                    <Route path={"*"} component={NotFound}/>
+                    <Route path={"*"} render={(props) => <NotFound {...props} message={'404'}/>}/>
                 </Switch>
                 <Footer/>
             </>

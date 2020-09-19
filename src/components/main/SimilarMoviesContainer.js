@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import MovieCard from "../../containers/MovieCard";
-import NoMovieFound from "./NoMovieFound";
+import NotFound from "../layout/NotFound";
 
 class SimilarMoviesContainer extends Component {
     render() {
@@ -10,7 +10,7 @@ class SimilarMoviesContainer extends Component {
         if (similarMovies !== undefined) {
             content = similarMovies.map((movie, index) => <MovieCard key={index} movie={movie}/>)
         } else {
-            return <NoMovieFound/>
+            return <NotFound message='no-movie-found'/>
         }
 
 

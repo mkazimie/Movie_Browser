@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
-import NoMovieFound from "./NoMovieFound";
 import MovieCard from "../../containers/MovieCard";
+import NotFound from "../layout/NotFound";
 
 class WishlistMoviesContainer extends Component {
     render() {
         const {wishlistMovies} = this.props;
         let content = '';
 
-        if (wishlistMovies !== undefined){
+        console.log(wishlistMovies);
+
+        if (wishlistMovies !== undefined && wishlistMovies.length > 0){
             content =  wishlistMovies.map((movie, index) => <MovieCard key={index} movie={movie}/>)
         } else {
-            return <NoMovieFound />
+            return <NotFound message={'wishlist-empty'} />
         }
 
         return (
