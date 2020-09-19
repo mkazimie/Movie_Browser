@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import MovieCard from "../../containers/MovieCard"
-import NotFound from "../layout/NotFound";
+import MovieCard from "../../../containers/Movie/MovieCard"
+import NotFound from "../../layout/NotFound";
 
 class MoviesContainer extends Component {
     render() {

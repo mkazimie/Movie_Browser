@@ -15,6 +15,7 @@ const initialState = {
     wishlist: [],
 }
 
+
 const moviesReducer = (state = initialState, action) => {
     switch (action.type) {
 
@@ -63,6 +64,10 @@ const moviesReducer = (state = initialState, action) => {
         default:
             return state
     }
-}
 
+
+
+
+
+}
 export default moviesReducer;

@@ -24,7 +24,7 @@ const setLoading = () => ({
 })
 
 
-const fetchMovies = text => dispatch => {
+const fetchMovies = (text) => dispatch => {
     axios.get(`http://www.omdbapi.com/?apikey=${OMDb_API_KEY}&s=${text}`
     )
         // .then(response => console.log(response.data.Search))
@@ -32,7 +32,7 @@ const fetchMovies = text => dispatch => {
         .catch(err => console.log(err));
 }
 
-const fetchMovie = id => dispatch => {
+const fetchMovie = (id) => dispatch => {
     axios.get(`http://www.omdbapi.com/?apikey=${OMDb_API_KEY}&i=${id}`
     )
         // .then(response => console.log(response.data))
@@ -40,11 +40,4 @@ const fetchMovie = id => dispatch => {
         .catch(err => console.log(err));
 }
 
-const fetchSimilar = (startingWith) => dispatch => {
-    axios.get(`http://www.omdbapi.com/?apikey=${OMDb_API_KEY}&s=${startingWith}`)
-        .then(response => dispatch(displayMovies(response.data.Search)))
-        // .then(response => console.log(response.data))
-        .catch(err => console.log(err))
-}
-
-export {searchMovie, displayMovies, displayMovie, setLoading, fetchMovies, fetchMovie, fetchSimilar};
+export {searchMovie, displayMovies, displayMovie, setLoading, fetchMovies, fetchMovie};

@@ -2,10 +2,10 @@ import React from 'react';
 import './static/App.css';
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import Landing from "./containers/Landing";
+import Landing from "./containers/Home/Landing";
 import {HashRouter as Router, Route, Switch} from "react-router-dom";
-import SingleMovie from "./containers/SingleMovie";
-import WishlistMoviesContainer from "./containers/WishlistMoviesContainer";
+import SingleMovie from "./containers/Movie/SingleMovie";
+import WishlistMoviesContainer from "./containers/Movies/WishlistMoviesContainer";
 import NotFound from "./components/layout/NotFound";
 
 

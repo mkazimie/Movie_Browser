@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import SearchForm from "../../containers/SearchForm";
+import SearchForm from "../../../containers/Search/SearchForm";
 import {Spinner} from "react-bootstrap";
-import MoviesContainer from "../../containers/MoviesContainer";
-import "../../static/App.css";
+import MoviesContainer from "../../../containers/Movies/MoviesContainer";
+import "../../../static/App.css";
 
 
 class Landing extends Component {

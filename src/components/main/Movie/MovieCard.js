@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronRight, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {Link} from 'react-router-dom';
-import "../../static/App.css"
+import "../../../static/App.css"
 
 
 class MovieCard extends Component {
@@ -21,7 +21,7 @@ class MovieCard extends Component {
 
         let isOnWishlist = false;
 
-        if (wishlist.indexOf(movie) >= 0) {
+        if (wishlist !== undefined && wishlist.indexOf(movie) >= 0) {
             isOnWishlist = true;
         }
 
@@ -34,8 +34,7 @@ class MovieCard extends Component {
                         {movie.Title} &#8226; {movie.Year}
                     </h5>
 
-                    <Link className="btn btn-primary" to={'/movie/' + movie.imdbID} target="_blank"
-                          rel="noopener noreferrer">
+                    <Link className="btn btn-primary" to={`/movie/${movie.imdbID}`}>
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
 

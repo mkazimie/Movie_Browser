@@ -1,35 +1,33 @@
 import React, {Component} from 'react';
 import {Spinner} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import SimilarMoviesContainer from "../../containers/SimilarMoviesContainer";
+import MovieCard from "../../../containers/Movie/MovieCard"
+import NotFound from "../../layout/NotFound";
 
 class SingleMovie extends Component {
-
-    constructor() {
-        super();
-        this.onClick = this.handleClick.bind(this);
-        this.state = {
-            fetchedSimilar: false
-        }
-    }
-
-
-    handleClick(event) {
-        const {id} = event.target;
-        let fragment = id.slice(0, 4);
-        console.log(fragment);
-        this.props.fetchSimilar(fragment);
-        this.setState(() => ({fetchedSimilar: true}))
-    }
 
     componentDidMount() {
         this.props.fetchMovie(this.props.match.params.id);
         this.props.setLoading();
+        window.scrollTo(0, 0)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const currentPropsId = this.props.match.params.id;
+        const prevPropsId = prevProps.match.params.id;
+        if (prevPropsId !== currentPropsId) {
+            this.props.fetchMovie(currentPropsId);
+            window.scrollTo(0, 0)
+        }
     }
 
 
     render() {
-        const {loading, movie} = this.props;
+        const {loading, movie, movies} = this.props;
+
+        let filteredMovies = movies.filter((item) => item.imdbID !== movie.imdbID);
+
+
         let movieInfo = (
             <div className="container">
                 <div className="row">
@@ -80,9 +78,14 @@ class SingleMovie extends Component {
                             <Link to={"/"} className="btn btn-default text-light">
                                 Go Back To Search
                             </Link>
-                            <button id={movie.Title} onClick={this.onClick}>Similar movies</button>
                         </div>
                     </div>
+                </div>
+                <h2> Similar Movies: </h2>
+                <div className="row">
+                    {filteredMovies ? filteredMovies.slice(0, 4).map((item, index) => <MovieCard movie={item}
+                                                                                                 key={index}/>) :
+                        <NotFound message={'no-movie-found'}/>}
                 </div>
             </div>
         )
@@ -90,10 +93,8 @@ class SingleMovie extends Component {
             : movieInfo;
 
         return (
-            <>
-                <div>{content}</div>
-                {this.state.fetchedSimilar ? <SimilarMoviesContainer/> : null}
-            </>
+            <div>{content}</div>
+
         )
     }
 

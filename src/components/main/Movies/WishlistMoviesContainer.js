@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import MovieCard from "../../containers/MovieCard";
-import NotFound from "../layout/NotFound";
+import MovieCard from "../../../containers/Movie/MovieCard";
+import NotFound from "../../layout/NotFound";
 
 class WishlistMoviesContainer extends Component {
     render() {
@@ -9,7 +9,7 @@ class WishlistMoviesContainer extends Component {
 
         console.log(wishlistMovies);
 
-        if (wishlistMovies !== undefined && wishlistMovies.length > 0){
+        if (wishlistMovies !== undefined){
             content =  wishlistMovies.map((movie, index) => <MovieCard key={index} movie={movie}/>)
         } else {
             return <NotFound message={'wishlist-empty'} />
