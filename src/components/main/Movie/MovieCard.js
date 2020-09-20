@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronRight, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {Link} from 'react-router-dom';
 import "../../../static/App.css"
+import RatingWidget from "../../layout/RatingWidget";
 
 
 class MovieCard extends Component {
@@ -38,19 +39,21 @@ class MovieCard extends Component {
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
 
+                    <RatingWidget/>
+
                     <div className="mt-2">
-                    {isOnWishlist ?
-                        <FontAwesomeIcon className="icon-event"
-                                         icon={faEyeSlash}
-                                         size={'2x'}
-                                         color={"#ff3333"}
-                                         onClick={() => this.handleOnClickRemoveWishlist(movie.imdbID)}/>
-                        :
-                        <FontAwesomeIcon className="icon-event"
-                                         icon={faEye}
-                                         size={'2x'}
-                                         color={'#00bfff'}
-                                         onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}/>}
+                        {isOnWishlist ?
+                            <FontAwesomeIcon className="icon-event"
+                                             icon={faEyeSlash}
+                                             size={'2x'}
+                                             color={"#ff3333"}
+                                             onClick={() => this.handleOnClickRemoveWishlist(movie.imdbID)}/>
+                            :
+                            <FontAwesomeIcon className="icon-event"
+                                             icon={faEye}
+                                             size={'2x'}
+                                             color={'#00bfff'}
+                                             onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}/>}
                     </div>
 
                 </div>
