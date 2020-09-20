@@ -9,7 +9,8 @@ class RatingWidget extends Component {
     }
 
     changeRating = (newRating) => {
-        this.setState({rating: newRating})
+        this.setState({rating: newRating});
+        this.props.addToWatched(this.props.imdbID)
     }
 
     render() {
@@ -21,7 +22,7 @@ class RatingWidget extends Component {
                 starCount={5}
                 changeRating={this.changeRating}
                 starDimension={'20px'}
-                starSpacing={'-5px'}
+                starSpacing={'1.5px'}
                 starRatedColor={'#ffff00'}
                 starEmptyColor={'#faebd7'}
                 starHoverColor={'#ffff00'}

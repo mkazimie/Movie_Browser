@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import MovieCard from "../../components/main/Movie/MovieCard";
-import {addToWishlist, removeFromWishlist} from "../../redux/actions/wishlistActions";
+import {addToWishlist, removeFromWishlist} from "../../redux/actions/selectActions";
 
 
 const mapDispatch = (dispatch) => {

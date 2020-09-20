@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronRight, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 import {Link} from 'react-router-dom';
 import "../../../static/App.css"
-import RatingWidget from "../../layout/RatingWidget";
+import RatingWidget from "../../../containers/Home/RatingWidget";
 
 
 class MovieCard extends Component {
@@ -39,7 +39,7 @@ class MovieCard extends Component {
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
 
-                    <RatingWidget/>
+                    <RatingWidget imdbID={movie.imdbID}/>
 
                     <div className="mt-2">
                         {isOnWishlist ?
