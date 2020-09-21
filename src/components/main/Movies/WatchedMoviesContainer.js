@@ -8,7 +8,7 @@ class WatchedMoviesContainer extends Component {
         let content = '';
 
         if (watched !== undefined){
-            content =  watched.map((movie, index) => <MovieCard key={index} movie={movie}/>)
+            content =  watched.map((movie, index) => <MovieCard key={index} movie={movie.movie} rating={movie.rating}/>)
         } else {
             return <NotFound message={'wishlist-empty'} />
         }

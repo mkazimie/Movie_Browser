@@ -4,6 +4,7 @@ import {faChevronRight, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-ico
 import {Link} from 'react-router-dom';
 import "../../../static/App.css"
 import RatingWidget from "../../../containers/Home/RatingWidget";
+// import StarRatingComponent from "react-star-ratings";
 
 
 class MovieCard extends Component {
@@ -17,14 +18,21 @@ class MovieCard extends Component {
         this.props.removeFromWishlist(id);
     }
 
+
     render() {
-        const {movie, wishlist} = this.props;
+        const {movie, wishlist, watched, rating} = this.props;
+        console.log(rating);
 
         let isOnWishlist = false;
+        // let alreadySeen = false;
 
         if (wishlist !== undefined && wishlist.indexOf(movie) >= 0) {
             isOnWishlist = true;
         }
+
+        // if (watched !== undefined && watched.indexOf(movie) >= 0){
+        //     alreadySeen = true;
+        // }
 
 
         return (
@@ -39,7 +47,10 @@ class MovieCard extends Component {
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
 
-                    <RatingWidget imdbID={movie.imdbID}/>
+
+                    <RatingWidget key={movie.imdbID} movie={movie} rating={rating}/>
+
+
 
                     <div className="mt-2">
                         {isOnWishlist ?
@@ -55,6 +66,9 @@ class MovieCard extends Component {
                                              color={'#00bfff'}
                                              onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}/>}
                     </div>
+                    {/*<div className="mt-2">*/}
+                    {/*    {alreadySeen ? <h2>Remove from watched</h2> : <h2>Add to watched</h2>}*/}
+                    {/*</div>*/}
 
                 </div>
             </div>

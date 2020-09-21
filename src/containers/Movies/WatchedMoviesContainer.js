@@ -3,7 +3,8 @@ import WatchedMoviesContainer from "../../components/main/Movies/WatchedMoviesCo
 
 
 const mapState = state => ({
-    watched : state.movies.watched
+    watched : state.movies.watched,
+    rating : state.movies.rating
 })
 
 

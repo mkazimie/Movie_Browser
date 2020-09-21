@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import MovieCard from "../../components/main/Movie/MovieCard";
-import {addToWishlist, removeFromWishlist} from "../../redux/actions/selectActions";
+import {addToWatched, addToWishlist, removeFromWishlist, setRating} from "../../redux/actions/selectActions";
 
 
 const mapDispatch = (dispatch) => {
@@ -12,6 +12,7 @@ const mapDispatch = (dispatch) => {
 
 const mapState = (state) => ({
     wishlist : state.movies.wishlist,
+    watched : state.movies.watched,
 })
 
 

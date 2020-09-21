@@ -3,7 +3,10 @@ import WishlistMoviesContainer from "../../components/main/Movies/WishlistMovies
 
 
 const mapState = state => ({
-    wishlistMovies : state.movies.wishlist
+    wishlistMovies : state.movies.wishlist,
+    watched : state.movies.watched,
+    rating : state.movies.rating
+
 })
 
 

@@ -5,7 +5,7 @@ import {
     DISPLAY_MOVIES,
     LOADING, REMOVE_FROM_WATCHED,
     REMOVE_FROM_WISHLIST,
-    SEARCH_MOVIE,
+    SEARCH_MOVIE, SET_RATING,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -14,7 +14,7 @@ const initialState = {
     loading: false,
     movie: [],
     wishlist: [],
-    watched: []
+    watched: [],
 }
 
 
@@ -62,24 +62,27 @@ const moviesReducer = (state = initialState, action) => {
 
         case ADD_TO_WATCHED:
             const watchedMovie = state.movies.filter((movie) => {
-                if (movie.imdbID === action.payload) {
+                if (movie.imdbID === action.payload.id) {
                     return movie;
                 }
             })[0];
             return {
                 ...state,
-                watched: [...state.watched, watchedMovie],
+                watched: [...state.watched, {
+                    movie : watchedMovie,
+                    rating : action.payload.rating
+                }],
             }
 
-
-        case REMOVE_FROM_WATCHED :
-            let filteredWatched = state.watched.filter((movie) => movie.imdbID !== action.payload);
-            return {
-                ...state,
-                watched: filteredWatched
-            }
+        // case REMOVE_FROM_WATCHED :
+        //     let filteredWatched = state.watched.filter((movie) => movie.imdbID !== action.payload);
+        //     return {
+        //         ...state,
+        //         watched: filteredWatched
+        //     }
 
         case LOADING:
+
             return {
                 ...state,
                 loading: true

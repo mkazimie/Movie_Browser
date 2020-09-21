@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import MovieCard from "../../../containers/Movie/MovieCard"
 import NotFound from "../../layout/NotFound";
 
+
 class MoviesContainer extends Component {
     render() {
         const {movies} = this.props;
-        let content = '';
+        let content = ''
 
         if (movies !== undefined){
             content =  movies.map((movie, index) => <MovieCard key={index} movie={movie}/>)
@@ -20,6 +21,5 @@ class MoviesContainer extends Component {
         );
     }
 }
-
 
 export default MoviesContainer;
