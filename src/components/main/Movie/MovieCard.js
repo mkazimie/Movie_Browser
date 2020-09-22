@@ -21,7 +21,6 @@ class MovieCard extends Component {
 
     render() {
         const {movie, wishlist, watched, rating} = this.props;
-        console.log(rating);
 
         let isOnWishlist = false;
         // let alreadySeen = false;

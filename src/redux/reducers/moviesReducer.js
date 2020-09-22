@@ -61,17 +61,22 @@ const moviesReducer = (state = initialState, action) => {
             }
 
         case ADD_TO_WATCHED:
-            const watchedMovie = state.movies.filter((movie) => {
+            const foundMovie = state.movies.filter((movie) => {
                 if (movie.imdbID === action.payload.id) {
                     return movie;
                 }
             })[0];
-            return {
-                ...state,
-                watched: [...state.watched, {
-                    movie : watchedMovie,
-                    rating : action.payload.rating
-                }],
+            if (state.watched.length > 0 && state.watched.some(watchedMovie => watchedMovie.movie.imdbID === action.payload.id)) {
+                return {
+                    ...state,
+                    watched : state.watched.map(watchedMovie => watchedMovie.movie.imdbID === action.payload.id ?
+                        {...watchedMovie, rating : action.payload.rating} : watchedMovie)
+                }
+            } else {
+                return {
+                    ...state,
+                    watched: [...state.watched, {movie: foundMovie, rating: action.payload.rating}]
+                }
             }
 
         // case REMOVE_FROM_WATCHED :
@@ -81,7 +86,8 @@ const moviesReducer = (state = initialState, action) => {
         //         watched: filteredWatched
         //     }
 
-        case LOADING:
+        case
+        LOADING:
 
             return {
                 ...state,

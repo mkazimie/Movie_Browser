@@ -13,11 +13,8 @@ class RatingWidget extends Component {
 // jesli id tego filmu nie znajduje sie w id filmow juz ogladanych
     changeRating = (newRating) => {
         this.setState({rating: newRating});
-        const {watched, movie} = this.props;
-        console.log(watched.indexOf(movie));
-        if (watched.map(item => item.imdbID !== movie.imdbID)){
-            this.props.addToWatched(movie.imdbID, newRating);
-        }
+        const {movie} = this.props;
+        this.props.addToWatched(movie.imdbID, newRating);
     }
 
 
