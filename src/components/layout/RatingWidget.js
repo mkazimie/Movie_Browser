@@ -23,7 +23,6 @@ class RatingWidget extends Component {
 
         return (
             <div>
-                <h2>{rating}</h2>
                 <StarRatingComponent
                     rating={rating}
                     numberOfStars={5}

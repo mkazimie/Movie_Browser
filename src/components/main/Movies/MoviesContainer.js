@@ -8,10 +8,11 @@ class MoviesContainer extends Component {
         const {movies} = this.props;
         let content = ''
 
-        if (movies !== undefined){
-            content =  movies.map((movie, index) => <MovieCard key={index} movie={movie}/>)
+
+        if (movies !== undefined) {
+            content = movies.map((movie, index) => <MovieCard key={index} movie={movie} rating={movie.rating}/>)
         } else {
-            return <NotFound message={'no-movie-found'} />
+            return <NotFound message={'no-movie-found'}/>
         }
 
         return (

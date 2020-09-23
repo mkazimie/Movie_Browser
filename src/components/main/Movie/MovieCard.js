@@ -4,7 +4,6 @@ import {faChevronRight, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-ico
 import {Link} from 'react-router-dom';
 import "../../../static/App.css"
 import RatingWidget from "../../../containers/Home/RatingWidget";
-// import StarRatingComponent from "react-star-ratings";
 
 
 class MovieCard extends Component {
@@ -22,16 +21,19 @@ class MovieCard extends Component {
     render() {
         const {movie, wishlist, watched, rating} = this.props;
 
+
         let isOnWishlist = false;
-        // let alreadySeen = false;
+        let alreadySeen = false;
 
         if (wishlist !== undefined && wishlist.indexOf(movie) >= 0) {
             isOnWishlist = true;
         }
 
-        // if (watched !== undefined && watched.indexOf(movie) >= 0){
-        //     alreadySeen = true;
-        // }
+        if (watched.length > 0 && watched.some(watchedMovie => watchedMovie.movie.imdbID === movie.imdbID)){
+            alreadySeen = true;
+
+        }
+
 
 
         return (
@@ -45,6 +47,7 @@ class MovieCard extends Component {
                     <Link className="btn btn-primary" to={`/movie/${movie.imdbID}`}>
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
+
 
 
                     <RatingWidget key={movie.imdbID} movie={movie} rating={rating}/>
@@ -65,9 +68,9 @@ class MovieCard extends Component {
                                              color={'#00bfff'}
                                              onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}/>}
                     </div>
-                    {/*<div className="mt-2">*/}
-                    {/*    {alreadySeen ? <h2>Remove from watched</h2> : <h2>Add to watched</h2>}*/}
-                    {/*</div>*/}
+                    <div className="mt-2">
+                        {alreadySeen ? <h2>Remove from watched</h2> : <h2>Add to watched</h2>}
+                    </div>
 
                 </div>
             </div>

@@ -69,15 +69,18 @@ const moviesReducer = (state = initialState, action) => {
             if (state.watched.length > 0 && state.watched.some(watchedMovie => watchedMovie.movie.imdbID === action.payload.id)) {
                 return {
                     ...state,
-                    watched : state.watched.map(watchedMovie => watchedMovie.movie.imdbID === action.payload.id ?
-                        {...watchedMovie, rating : action.payload.rating} : watchedMovie)
+                    watched: state.watched.map(watchedMovie => watchedMovie.movie.imdbID === action.payload.id ?
+                        {...watchedMovie, rating: action.payload.rating} : watchedMovie),
+                    movies: state.movies.map(movie => movie.imdbID === action.payload.id ? {...movie, rating : action.payload.rating} : movie)
                 }
             } else {
                 return {
                     ...state,
-                    watched: [...state.watched, {movie: foundMovie, rating: action.payload.rating}]
+                    watched: [...state.watched, {movie: foundMovie, rating: action.payload.rating}],
+                    movies: state.movies.map(movie => movie.imdbID === action.payload.id ? {...movie, rating : action.payload.rating} : movie)
                 }
             }
+
 
         // case REMOVE_FROM_WATCHED :
         //     let filteredWatched = state.watched.filter((movie) => movie.imdbID !== action.payload);
