@@ -3,27 +3,22 @@ import StarRatingComponent from "react-star-ratings";
 
 
 class RatingWidget extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            rating: this.props.rating,
-        }
-    }
+
 
     changeRating = (newRating) => {
-        this.setState({rating: newRating});
         const {movie} = this.props;
         this.props.addToWatched(movie.imdbID, newRating);
     }
 
 
     render() {
-        const {rating} = this.state;
+        const {rating} = this.props;
+
 
         return (
             <div>
                 <StarRatingComponent
-                    rating={rating}
+                    rating={rating === undefined ? 0 : rating}
                     numberOfStars={5}
                     starCount={5}
                     changeRating={this.changeRating}
