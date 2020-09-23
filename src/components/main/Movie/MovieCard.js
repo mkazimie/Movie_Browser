@@ -11,6 +11,7 @@ class MovieCard extends Component {
 
     handleOnClickAddWishlist = id => {
         this.props.addToWishlist(id);
+        this.props.removeFromWatched(id);
     }
 
     handleOnClickRemoveWishlist = id => {
@@ -26,13 +27,12 @@ class MovieCard extends Component {
         const {movie, wishlist, watched, rating} = this.props;
 
 
-        let isOnWishlist = false;
+        let onWishlist = false;
         let alreadySeen = false;
 
-        if (wishlist !== undefined && wishlist.indexOf(movie) >= 0) {
-            isOnWishlist = true;
+        if (wishlist.length > 0 && wishlist.some(movieToBeSeen => movieToBeSeen.imdbID === movie.imdbID)) {
+            onWishlist = true;
         }
-
         if (watched.length > 0 && watched.some(watchedMovie => watchedMovie.movie.imdbID === movie.imdbID)) {
             alreadySeen = true;
         }
@@ -50,27 +50,29 @@ class MovieCard extends Component {
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
 
-
                     <RatingWidget key={movie.imdbID} movie={movie} rating={rating}/>
 
 
                     <div className="mt-2">
-                        {isOnWishlist ?
-                            <FontAwesomeIcon className="icon-event"
-                                             icon={faEyeSlash}
-                                             size={'2x'}
-                                             color={"#ff3333"}
-                                             onClick={() => this.handleOnClickRemoveWishlist(movie.imdbID)}/>
-                            :
-                            <FontAwesomeIcon className="icon-event"
-                                             icon={faEye}
-                                             size={'2x'}
-                                             color={'#00bfff'}
-                                             onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}/>}
+                        {(onWishlist && !alreadySeen) && <FontAwesomeIcon className="icon-event"
+                                                                          icon={faEyeSlash}
+                                                                          size={'2x'}
+                                                                          color={"#ff3333"}
+                                                                          onClick={() => this.handleOnClickRemoveWishlist(movie.imdbID)}
+                        />}
+                        {(!onWishlist && !alreadySeen) && <FontAwesomeIcon className="icon-event"
+                                                                           icon={faEye}
+                                                                           size={'2x'}
+                                                                           color={'#00bfff'}
+                                                                           onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}
+                        />}
+
+
                     </div>
                     <div className="mt-2">
-                        {alreadySeen ? <button onClick={() => this.handleOnClickRemoveWatched(movie.imdbID)}>Remove from
-                            watched</button> : <h2>Add to watched</h2>}
+                        {alreadySeen &&
+                        <button onClick={() => this.handleOnClickRemoveWatched(movie.imdbID)}>Remove from
+                            watched</button>}
                     </div>
 
                 </div>

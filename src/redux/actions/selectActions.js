@@ -1,4 +1,10 @@
-import {ADD_TO_WATCHED, ADD_TO_WISHLIST, REMOVE_FROM_WATCHED, REMOVE_FROM_WISHLIST, SET_RATING} from "./actionTypes";
+import {
+    ADD_TO_WATCHED,
+    ADD_TO_WISHLIST,
+    REMOVE_FROM_WATCHED,
+    REMOVE_FROM_WISHLIST,
+    UPDATE_MOVIES_RATING
+} from "./actionTypes";
 
 const addToWishlist = id => ({
     type : ADD_TO_WISHLIST,
@@ -24,5 +30,13 @@ const removeFromWatched = id => ({
     payload : id
 })
 
+const updateMoviesRating = (id, rating) => ({
+    type : UPDATE_MOVIES_RATING,
+    payload : {
+        id : id,
+        rating : rating
+    }
+})
 
-export {addToWishlist, removeFromWishlist, addToWatched, removeFromWatched};
+
+export {addToWishlist, removeFromWishlist, addToWatched, removeFromWatched, updateMoviesRating};

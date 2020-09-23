@@ -5,7 +5,7 @@ import {
     DISPLAY_MOVIES,
     LOADING, REMOVE_FROM_WATCHED,
     REMOVE_FROM_WISHLIST,
-    SEARCH_MOVIE, SET_RATING,
+    SEARCH_MOVIE, SET_RATING, UPDATE_MOVIES_RATING,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -48,9 +48,15 @@ const moviesReducer = (state = initialState, action) => {
                     return movie;
                 }
             })[0];
-            return {
-                ...state,
-                wishlist: [...state.wishlist, selectedMovie],
+            if (state.wishlist.length > 0 && state.wishlist.some(movie => movie.imdbID === action.payload)) {
+                return {
+                    ...state,
+                }
+            } else {
+                return {
+                    ...state,
+                    wishlist: [...state.wishlist, selectedMovie]
+                }
             }
 
         case REMOVE_FROM_WISHLIST :
@@ -71,22 +77,22 @@ const moviesReducer = (state = initialState, action) => {
                     ...state,
                     watched: state.watched.map(watchedMovie => watchedMovie.movie.imdbID === action.payload.id ?
                         {...watchedMovie, rating: action.payload.rating} : watchedMovie),
-                    movies: state.movies.map(movie => movie.imdbID === action.payload.id ? {
-                        ...movie,
-                        rating: action.payload.rating
-                    } : movie)
                 }
             } else {
                 return {
                     ...state,
                     watched: [...state.watched, {movie: foundMovie, rating: action.payload.rating}],
-                    movies: state.movies.map(movie => movie.imdbID === action.payload.id ? {
-                        ...movie,
-                        rating: action.payload.rating
-                    } : movie)
                 }
             }
 
+        case UPDATE_MOVIES_RATING :
+            return {
+                ...state,
+                movies: state.movies.map(movie => movie.imdbID === action.payload.id ? {
+                    ...movie,
+                    rating: action.payload.rating
+                } : movie)
+            }
 
         case REMOVE_FROM_WATCHED :
             let filteredWatched = state.watched.filter((movie) => movie.movie.imdbID !== action.payload);

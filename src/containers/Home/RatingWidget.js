@@ -1,6 +1,6 @@
 import RatingWidget from "../../components/layout/RatingWidget";
 import {connect} from "react-redux";
-import {addToWatched} from "../../redux/actions/selectActions";
+import {addToWatched, removeFromWishlist, updateMoviesRating} from "../../redux/actions/selectActions";
 
 const mapState = (state) => ({
     watched : state.movies.watched,
@@ -9,8 +9,8 @@ const mapState = (state) => ({
 const mapDispatch = (dispatch) => {
     return{
         addToWatched : (id, rating) => dispatch(addToWatched(id, rating)),
-        // setRating : (rating) => dispatch(setRating(rating)),
-        // removeFromWatched: (id) => dispatch(removeFromWatched(id)),
+        removeFromWishlist: (id) => dispatch(removeFromWishlist(id)),
+        updateMovies : (id, rating) => dispatch(updateMoviesRating(id, rating))
     }
 }
 

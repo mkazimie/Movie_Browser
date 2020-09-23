@@ -8,6 +8,8 @@ class RatingWidget extends Component {
     changeRating = (newRating) => {
         const {movie} = this.props;
         this.props.addToWatched(movie.imdbID, newRating);
+        this.props.updateMovies(movie.imdbID, newRating);
+        this.props.removeFromWishlist(movie.imdbID);
     }
 
 
