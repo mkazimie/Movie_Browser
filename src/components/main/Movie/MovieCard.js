@@ -17,6 +17,10 @@ class MovieCard extends Component {
         this.props.removeFromWishlist(id);
     }
 
+    handleOnClickRemoveWatched = id => {
+        this.props.removeFromWatched(id);
+    }
+
 
     render() {
         const {movie, wishlist, watched, rating} = this.props;
@@ -29,11 +33,9 @@ class MovieCard extends Component {
             isOnWishlist = true;
         }
 
-        if (watched.length > 0 && watched.some(watchedMovie => watchedMovie.movie.imdbID === movie.imdbID)){
+        if (watched.length > 0 && watched.some(watchedMovie => watchedMovie.movie.imdbID === movie.imdbID)) {
             alreadySeen = true;
-
         }
-
 
 
         return (
@@ -49,9 +51,7 @@ class MovieCard extends Component {
                     </Link>
 
 
-
                     <RatingWidget key={movie.imdbID} movie={movie} rating={rating}/>
-
 
 
                     <div className="mt-2">
@@ -69,7 +69,8 @@ class MovieCard extends Component {
                                              onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}/>}
                     </div>
                     <div className="mt-2">
-                        {alreadySeen ? <h2>Remove from watched</h2> : <h2>Add to watched</h2>}
+                        {alreadySeen ? <button onClick={() => this.handleOnClickRemoveWatched(movie.imdbID)}>Remove from
+                            watched</button> : <h2>Add to watched</h2>}
                     </div>
 
                 </div>

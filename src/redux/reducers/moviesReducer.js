@@ -71,31 +71,41 @@ const moviesReducer = (state = initialState, action) => {
                     ...state,
                     watched: state.watched.map(watchedMovie => watchedMovie.movie.imdbID === action.payload.id ?
                         {...watchedMovie, rating: action.payload.rating} : watchedMovie),
-                    movies: state.movies.map(movie => movie.imdbID === action.payload.id ? {...movie, rating : action.payload.rating} : movie)
+                    movies: state.movies.map(movie => movie.imdbID === action.payload.id ? {
+                        ...movie,
+                        rating: action.payload.rating
+                    } : movie)
                 }
             } else {
                 return {
                     ...state,
                     watched: [...state.watched, {movie: foundMovie, rating: action.payload.rating}],
-                    movies: state.movies.map(movie => movie.imdbID === action.payload.id ? {...movie, rating : action.payload.rating} : movie)
+                    movies: state.movies.map(movie => movie.imdbID === action.payload.id ? {
+                        ...movie,
+                        rating: action.payload.rating
+                    } : movie)
                 }
             }
 
 
-        // case REMOVE_FROM_WATCHED :
-        //     let filteredWatched = state.watched.filter((movie) => movie.imdbID !== action.payload);
-        //     return {
-        //         ...state,
-        //         watched: filteredWatched
-        //     }
+        case REMOVE_FROM_WATCHED :
+            let filteredWatched = state.watched.filter((movie) => movie.movie.imdbID !== action.payload);
+            let moviesUpdated = state.movies.map((movie) => movie.imdbID === action.payload ? {
+                ...movie,
+                rating: 0
+            } : movie);
+            return {
+                ...state,
+                watched: filteredWatched,
+                movies: moviesUpdated
+            }
 
-        case
-        LOADING:
-
+        case LOADING:
             return {
                 ...state,
                 loading: true
             }
+
         default:
             return state
     }

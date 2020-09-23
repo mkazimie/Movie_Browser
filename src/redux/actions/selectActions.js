@@ -19,10 +19,10 @@ const addToWatched= (id, rating) => ({
     }
 })
 
-// const removeFromWatched = id => ({
-//     type : REMOVE_FROM_WATCHED,
-//     payload : id
-// })
+const removeFromWatched = id => ({
+    type : REMOVE_FROM_WATCHED,
+    payload : id
+})
 
 
-export {addToWishlist, removeFromWishlist, addToWatched};
+export {addToWishlist, removeFromWishlist, addToWatched, removeFromWatched};

@@ -1,12 +1,17 @@
 import {connect} from "react-redux";
 import MovieCard from "../../components/main/Movie/MovieCard";
-import {addToWatched, addToWishlist, removeFromWishlist, setRating} from "../../redux/actions/selectActions";
+import {
+    addToWishlist,
+    removeFromWatched,
+    removeFromWishlist,
+} from "../../redux/actions/selectActions";
 
 
 const mapDispatch = (dispatch) => {
     return{
         addToWishlist : (id) => dispatch(addToWishlist(id)),
         removeFromWishlist: (id) => dispatch(removeFromWishlist(id)),
+        removeFromWatched : (id) => dispatch(removeFromWatched(id))
     }
 }
 

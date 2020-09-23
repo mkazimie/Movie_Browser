@@ -10,7 +10,6 @@ class RatingWidget extends Component {
         }
     }
 
-// jesli id tego filmu nie znajduje sie w id filmow juz ogladanych
     changeRating = (newRating) => {
         this.setState({rating: newRating});
         const {movie} = this.props;
