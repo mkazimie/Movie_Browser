@@ -27,7 +27,6 @@ const setLoading = () => ({
 const fetchMovies = (text) => dispatch => {
     axios.get(`http://www.omdbapi.com/?apikey=${OMDb_API_KEY}&s=${text}`
     )
-        // .then(response => console.log(response.data.Search))
         .then(response => dispatch(displayMovies(response.data.Search)))
         .catch(err => console.log(err));
 }
@@ -35,7 +34,6 @@ const fetchMovies = (text) => dispatch => {
 const fetchMovie = (id) => dispatch => {
     axios.get(`http://www.omdbapi.com/?apikey=${OMDb_API_KEY}&i=${id}`
     )
-        // .then(response => console.log(response.data))
         .then(response => dispatch(displayMovie(response.data)))
         .catch(err => console.log(err));
 }

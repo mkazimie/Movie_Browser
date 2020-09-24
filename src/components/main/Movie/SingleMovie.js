@@ -3,7 +3,6 @@ import {Spinner} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import MovieCard from "../../../containers/Movie/MovieCard"
 import NotFound from "../../layout/NotFound";
-import RatingWidget from "../../../containers/Home/RatingWidget";
 
 class SingleMovie extends Component {
 
@@ -28,9 +27,6 @@ class SingleMovie extends Component {
 
         let filteredMovies = movies.filter((item) => item.imdbID !== movie.imdbID);
 
-        let selectedMovie = movies.filter(element => element.imdbID === movie.imdbID)[0];
-
-
         let movieInfo = (
             <div className="container">
                 <div className="row">
@@ -40,9 +36,6 @@ class SingleMovie extends Component {
                     <div className="col-md-8">
                         <h2 className="mb-4"> {movie.Title} </h2>
                         <ul className="list-group">
-                            <li className="list-group-item">
-                                <RatingWidget key={movie.imdbID} movie={movie} rating={selectedMovie === undefined ? 0 : selectedMovie.rating}/>
-                            </li>
                             <li className="list-group-item">
                                 <strong>Genre:</strong> {movie.Genre}
                             </li>
