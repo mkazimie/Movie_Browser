@@ -5,7 +5,7 @@ import {
     DISPLAY_MOVIES,
     LOADING, REMOVE_FROM_WATCHED,
     REMOVE_FROM_WISHLIST,
-    SEARCH_MOVIE, SET_RATING, UPDATE_MOVIES_RATING,
+    SEARCH_MOVIE, UPDATE_MOVIES_RATING,
 } from "../actions/actionTypes";
 
 const initialState = {

@@ -3,6 +3,7 @@ import {Spinner} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import MovieCard from "../../../containers/Movie/MovieCard"
 import NotFound from "../../layout/NotFound";
+import RatingWidget from "../../../containers/Home/RatingWidget";
 
 class SingleMovie extends Component {
 
@@ -23,9 +24,16 @@ class SingleMovie extends Component {
 
 
     render() {
-        const {loading, movie, movies} = this.props;
+        const {loading, movie, movies, rating} = this.props;
 
         let filteredMovies = movies.filter((item) => item.imdbID !== movie.imdbID);
+        console.log(rating);
+
+        let selectedMovie = movies.filter(element => {
+            if (element.imdbID === movie.imdbID) {
+                return element;
+            }
+        })[0];
 
 
         let movieInfo = (
@@ -37,6 +45,9 @@ class SingleMovie extends Component {
                     <div className="col-md-8">
                         <h2 className="mb-4"> {movie.Title} </h2>
                         <ul className="list-group">
+                            <li className="list-group-item">
+                                <RatingWidget key={movie.imdbID} movie={movie} rating={selectedMovie === undefined ? 0 : selectedMovie.rating}/>
+                            </li>
                             <li className="list-group-item">
                                 <strong>Genre:</strong> {movie.Genre}
                             </li>
@@ -84,7 +95,8 @@ class SingleMovie extends Component {
                 <h2> Similar Movies: </h2>
                 <div className="row">
                     {filteredMovies ? filteredMovies.slice(0, 4).map((item, index) => <MovieCard movie={item}
-                                                                                                 key={index}/>) :
+                                                                                                 key={index}
+                                                                                                 rating={item.rating}/>) :
                         <NotFound message={'no-movie-found'}/>}
                 </div>
             </div>
