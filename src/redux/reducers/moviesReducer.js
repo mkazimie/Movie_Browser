@@ -43,11 +43,7 @@ const moviesReducer = (state = initialState, action) => {
             }
 
         case ADD_TO_WISHLIST :
-            const selectedMovie = state.movies.filter((movie) => {
-                if (movie.imdbID === action.payload) {
-                    return movie;
-                }
-            })[0];
+            const selectedMovie = state.movies.filter(movie => movie.imdbID === action.payload)[0];
             if (state.wishlist.length > 0 && state.wishlist.some(movie => movie.imdbID === action.payload)) {
                 return {
                     ...state,
@@ -60,18 +56,14 @@ const moviesReducer = (state = initialState, action) => {
             }
 
         case REMOVE_FROM_WISHLIST :
-            let filteredWishlist = state.wishlist.filter((movie) => movie.imdbID !== action.payload);
+            const filteredWishlist = state.wishlist.filter(movie => movie.imdbID !== action.payload);
             return {
                 ...state,
                 wishlist: filteredWishlist
             }
 
         case ADD_TO_WATCHED:
-            const foundMovie = state.movies.filter((movie) => {
-                if (movie.imdbID === action.payload.id) {
-                    return movie;
-                }
-            })[0];
+            const foundMovie = state.movies.filter(movie => movie.imdbID === action.payload.id)[0];
             if (state.watched.length > 0 && state.watched.some(watchedMovie => watchedMovie.movie.imdbID === action.payload.id)) {
                 return {
                     ...state,

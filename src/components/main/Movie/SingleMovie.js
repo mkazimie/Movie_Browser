@@ -24,16 +24,11 @@ class SingleMovie extends Component {
 
 
     render() {
-        const {loading, movie, movies, rating} = this.props;
+        const {loading, movie, movies} = this.props;
 
         let filteredMovies = movies.filter((item) => item.imdbID !== movie.imdbID);
-        console.log(rating);
 
-        let selectedMovie = movies.filter(element => {
-            if (element.imdbID === movie.imdbID) {
-                return element;
-            }
-        })[0];
+        let selectedMovie = movies.filter(element => element.imdbID === movie.imdbID)[0];
 
 
         let movieInfo = (
