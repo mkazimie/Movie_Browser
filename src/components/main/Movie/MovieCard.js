@@ -42,7 +42,8 @@ class MovieCard extends Component {
             <div className="col-lg-4 col-sm-6 mb-5">
                 <div className="card card-body h-100 border-secondary bg-dark text-white text-center">
                     <img className="w-100 h-75 mb-2"
-                         src={movie.Poster === "N/A" ? "https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png" : movie.Poster}
+                         src={movie.Poster}
+                         onError={(e)=>{e.target.onError = null; e.target.src="https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png"}}
                          alt="Movie Cover"/>
                     <h5 className="text-light card-title">
                         {movie.Title}

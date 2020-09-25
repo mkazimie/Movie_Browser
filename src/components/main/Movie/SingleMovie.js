@@ -32,7 +32,8 @@ class SingleMovie extends Component {
                 <div className="row">
                     <div className="col-md-4 card card-body">
                         <img
-                            src={movie.Poster === "N/A" ? "https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png" : movie.Poster}
+                            src={movie.Poster}
+                            onError={(e)=>{e.target.onError = null; e.target.src="https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png"}}
                             className="thumbnail" alt="Poster"/>
                     </div>
                     <div className="col-md-8">
