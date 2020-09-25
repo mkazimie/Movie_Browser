@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronRight, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {faChevronRight, faEye, faEyeSlash, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {Link} from 'react-router-dom';
 import "../../../static/App.css"
 import RatingWidget from "../../../containers/Home/RatingWidget";
@@ -39,41 +39,59 @@ class MovieCard extends Component {
 
 
         return (
-            <div className="col-md-3 mb-5">
-                <div className="card card-body bg-dark text-center h-100">
-                    <img className="w-100 mb-2" src={movie.Poster} alt="Movie Cover"/>
+            <div className="col-lg-4 col-sm-6 mb-5">
+                <div className="card card-body h-100 border-secondary bg-dark text-white text-center">
+                    <img className="w-100 h-75 mb-2"
+                         src={movie.Poster === "N/A" ? "https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png" : movie.Poster}
+                         alt="Movie Cover"/>
                     <h5 className="text-light card-title">
-                        {movie.Title} &#8226; {movie.Year}
+                        {movie.Title}
+                    </h5>
+                    <h5 className="text-light card-title">
+                        ({movie.Year})
                     </h5>
 
                     <Link className="btn btn-primary" to={`/movie/${movie.imdbID}`}>
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
 
+                    <div className="mt-2">
                     <RatingWidget key={movie.imdbID} movie={movie} rating={rating}/>
-
-
-                    <div className="mt-2">
-                        {(onWishlist && !alreadySeen) && <FontAwesomeIcon className="icon-event"
-                                                                          icon={faEyeSlash}
-                                                                          size={'2x'}
-                                                                          color={"#ff3333"}
-                                                                          onClick={() => this.handleOnClickRemoveWishlist(movie.imdbID)}
-                        />}
-                        {(!onWishlist && !alreadySeen) && <FontAwesomeIcon className="icon-event"
-                                                                           icon={faEye}
-                                                                           size={'2x'}
-                                                                           color={'#00bfff'}
-                                                                           onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}
-                        />}
-
-
                     </div>
-                    <div className="mt-2">
+
+
+                    {(onWishlist && !alreadySeen) &&
+                    <button className="btn btn-dark text-white mt-2"
+                            onClick={() => this.handleOnClickRemoveWishlist(movie.imdbID)}>
+                        Remove from Wishlist &nbsp;
+                        <FontAwesomeIcon className="icon-event"
+                                         icon={faEyeSlash}
+                                         size={'1.5'}
+                                         color={"#ff3333"}
+
+                        /></button>}
+
+                    {(!onWishlist && !alreadySeen) &&
+                    <button className="btn btn-dark mt-2 text-white"
+                            onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}>
+                        Add to Wishlist &nbsp;
+                        <FontAwesomeIcon className="icon-event"
+                                         icon={faEye}
+                                         size={'1.5'}
+                                         color={'#00bfff'}
+                        /></button>}
+
+
                         {alreadySeen &&
-                        <button onClick={() => this.handleOnClickRemoveWatched(movie.imdbID)}>Remove from
-                            watched</button>}
-                    </div>
+                        <button className="btn btn-light mt-2"
+                                onClick={() => this.handleOnClickRemoveWatched(movie.imdbID)}>Remove from
+                            watched &nbsp;
+                            <FontAwesomeIcon className="icon-event"
+                                             icon={faTrash}
+                                             size={'1.5'}
+                                             color={'#ff3333'}
+                            />
+                        </button>}
 
                 </div>
             </div>

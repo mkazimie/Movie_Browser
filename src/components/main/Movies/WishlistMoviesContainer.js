@@ -9,15 +9,17 @@ class WishlistMoviesContainer extends Component {
 
         console.log(wishlistMovies);
 
-        if (wishlistMovies !== undefined){
-            content =  wishlistMovies.map((movie, index) => <MovieCard key={index} movie={movie}/>)
+        if (wishlistMovies !== undefined) {
+            content = wishlistMovies.map((movie, index) => <MovieCard key={index} movie={movie}/>)
         } else {
-            return <NotFound message={'wishlist-empty'} />
+            return <NotFound message={'wishlist-empty'}/>
         }
 
         return (
-            <div className='row mb-5'>
-                {content}
+            <div className="container">
+                <div className='row mb-5'>
+                    {content}
+                </div>
             </div>
         );
     }

@@ -27,7 +27,7 @@ class SearchForm extends Component {
             <div className="jumbotron jumbotron-fluid mt-5 text-center">
                 <div className="container">
                     <h1 className="display-4 mb-3">
-                        <FontAwesomeIcon icon={faSearch}/> Search for a movie ,TV series ..
+                        <FontAwesomeIcon icon={faSearch}/> Search for a movie, TV series ..
                     </h1>
                     <form id="searchForm" onSubmit={this.handleOnSubmit}>
                         <input

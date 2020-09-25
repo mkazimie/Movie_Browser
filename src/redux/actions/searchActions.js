@@ -28,6 +28,7 @@ const fetchMovies = (text) => dispatch => {
     axios.get(`http://www.omdbapi.com/?apikey=${OMDb_API_KEY}&s=${text}`
     )
         .then(response => dispatch(displayMovies(response.data.Search)))
+        // .then(response => console.log(response.data.Search))
         .catch(err => console.log(err));
 }
 

@@ -31,7 +31,9 @@ class SingleMovie extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-md-4 card card-body">
-                        <img src={movie.Poster} className="thumbnail" alt="Poster"/>
+                        <img
+                            src={movie.Poster === "N/A" ? "https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png" : movie.Poster}
+                            className="thumbnail" alt="Poster"/>
                     </div>
                     <div className="col-md-8">
                         <h2 className="mb-4"> {movie.Title} </h2>
@@ -82,7 +84,7 @@ class SingleMovie extends Component {
                 </div>
                 <h2> Similar Movies: </h2>
                 <div className="row">
-                    {filteredMovies ? filteredMovies.slice(0, 4).map((item, index) => <MovieCard movie={item}
+                    {filteredMovies ? filteredMovies.slice(0, 3).map((item, index) => <MovieCard movie={item}
                                                                                                  key={index}
                                                                                                  rating={item.rating}/>) :
                         <NotFound message={'no-movie-found'}/>}
