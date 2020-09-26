@@ -9,7 +9,7 @@ class WishlistMoviesContainer extends Component {
 
         console.log(wishlistMovies);
 
-        if (wishlistMovies !== undefined) {
+        if (wishlistMovies !== undefined && wishlistMovies.length > 0) {
             content = wishlistMovies.map((movie, index) => <MovieCard key={index} movie={movie}/>)
         } else {
             return <NotFound message={'wishlist-empty'}/>

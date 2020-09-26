@@ -7,10 +7,10 @@ class WatchedMoviesContainer extends Component {
         const {watched} = this.props;
         let content = '';
 
-        if (watched !== undefined) {
+        if (watched !== undefined && watched.length > 0) {
             content = watched.map((movie, index) => <MovieCard key={index} movie={movie.movie} rating={movie.rating}/>)
         } else {
-            return <NotFound message={'wishlist-empty'}/>
+            return <NotFound message={'watched-empty'}/>
         }
 
         return (

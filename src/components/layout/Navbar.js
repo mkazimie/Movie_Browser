@@ -16,6 +16,7 @@ const Navbar = () => {
         <div>
             <nav className="navbar navbar-light bg-dark mb-5">
                 <div className="container">
+                <NavLink className="navbar-brand font-weight-bold text-white" to={"/"}>Movie Browser</NavLink>
                     <div className="navbar-header">
                         <NavLink exact className="navbar-brand text-lg brand-text px-2" activeStyle={active}  to={"/"}>
                             Search

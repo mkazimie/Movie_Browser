@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Spinner} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import MovieCard from "../../../containers/Movie/MovieCard"
-import NotFound from "../../layout/NotFound";
 
 class SingleMovie extends Component {
 
@@ -83,12 +82,12 @@ class SingleMovie extends Component {
                         </div>
                     </div>
                 </div>
-                <h2> Similar Movies: </h2>
+                {filteredMovies.length > 0 && <h2> Similar Movies: </h2> }
                 <div className="row">
-                    {filteredMovies ? filteredMovies.slice(0, 3).map((item, index) => <MovieCard movie={item}
+                    {filteredMovies.length > 0 ? filteredMovies.slice(0, 6).map((item, index) => <MovieCard movie={item}
                                                                                                  key={index}
                                                                                                  rating={item.rating}/>) :
-                        <NotFound message={'no-movie-found'}/>}
+                        null}
                 </div>
             </div>
         )

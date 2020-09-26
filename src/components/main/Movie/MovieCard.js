@@ -40,10 +40,14 @@ class MovieCard extends Component {
 
         return (
             <div className="col-lg-4 col-sm-6 mb-5">
-                <div className="card card-body h-100 border-secondary bg-dark text-white text-center">
-                    <img className="w-100 h-75 mb-2"
+                <div className="card card-body bg-dark  text-white text-center h-100">
+
+                    <img className="mb-2 card-img-top mh-75"
                          src={movie.Poster}
-                         onError={(e)=>{e.target.onError = null; e.target.src="https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png"}}
+                         onError={(e) => {
+                             e.target.onError = null;
+                             e.target.src = "https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png"
+                         }}
                          alt="Movie Cover"/>
                     <h5 className="text-light card-title">
                         {movie.Title}
@@ -57,7 +61,7 @@ class MovieCard extends Component {
                     </Link>
 
                     <div className="mt-2">
-                    <RatingWidget key={movie.imdbID} movie={movie} rating={rating}/>
+                        <RatingWidget key={movie.imdbID} movie={movie} rating={rating}/>
                     </div>
 
 
@@ -83,16 +87,16 @@ class MovieCard extends Component {
                         /></button>}
 
 
-                        {alreadySeen &&
-                        <button className="btn btn-light mt-2"
-                                onClick={() => this.handleOnClickRemoveWatched(movie.imdbID)}>Remove from
-                            watched &nbsp;
-                            <FontAwesomeIcon className="icon-event"
-                                             icon={faTrash}
-                                             size={'1.5'}
-                                             color={'#ff3333'}
-                            />
-                        </button>}
+                    {alreadySeen &&
+                    <button className="btn btn-light mt-2"
+                            onClick={() => this.handleOnClickRemoveWatched(movie.imdbID)}>Remove from
+                        watched &nbsp;
+                        <FontAwesomeIcon className="icon-event"
+                                         icon={faTrash}
+                                         size={'1.5'}
+                                         color={'#ff3333'}
+                        />
+                    </button>}
 
                 </div>
             </div>
