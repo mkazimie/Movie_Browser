@@ -16,9 +16,9 @@ class MoviesContainer extends Component {
         }
 
         return (
-            <div className='row mb-5'>
-                {content}
-            </div>
+                <div className='row mb-5'>
+                    {content}
+                </div>
         );
     }
 }

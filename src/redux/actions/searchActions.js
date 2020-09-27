@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {SEARCH_MOVIE, DISPLAY_MOVIES, DISPLAY_MOVIE, LOADING} from "./actionTypes";
+import {SEARCH_MOVIE, DISPLAY_MOVIES, DISPLAY_MOVIE, LOADING, CLEAR_SEARCH} from "./actionTypes";
 
 const OMDb_API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -23,6 +23,10 @@ const setLoading = () => ({
     type: LOADING
 })
 
+const clearSearch = () => ({
+    type : CLEAR_SEARCH,
+})
+
 
 const fetchMovies = (text) => dispatch => {
     axios.get(`http://www.omdbapi.com/?apikey=${OMDb_API_KEY}&s=${text}`
@@ -39,4 +43,4 @@ const fetchMovie = (id) => dispatch => {
         .catch(err => console.log(err));
 }
 
-export {searchMovie, displayMovies, displayMovie, setLoading, fetchMovies, fetchMovie};
+export {searchMovie, displayMovies, displayMovie, setLoading, fetchMovies, fetchMovie, clearSearch};

@@ -14,8 +14,8 @@ class WatchedMoviesContainer extends Component {
         }
 
         return (
-            <div className="container">
-                <div className='row mb-5'>
+            <div className="container mb-5">
+                <div className='row'>
                     {content}
                 </div>
             </div>

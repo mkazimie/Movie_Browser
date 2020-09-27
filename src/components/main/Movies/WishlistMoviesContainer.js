@@ -7,8 +7,6 @@ class WishlistMoviesContainer extends Component {
         const {wishlistMovies} = this.props;
         let content = '';
 
-        console.log(wishlistMovies);
-
         if (wishlistMovies !== undefined && wishlistMovies.length > 0) {
             content = wishlistMovies.map((movie, index) => <MovieCard key={index} movie={movie}/>)
         } else {
@@ -16,7 +14,7 @@ class WishlistMoviesContainer extends Component {
         }
 
         return (
-            <div className="container">
+            <div className="container mb-5">
                 <div className='row mb-5'>
                     {content}
                 </div>

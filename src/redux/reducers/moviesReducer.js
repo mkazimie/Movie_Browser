@@ -1,6 +1,6 @@
 import {
     ADD_TO_WATCHED,
-    ADD_TO_WISHLIST,
+    ADD_TO_WISHLIST, CLEAR_SEARCH,
     DISPLAY_MOVIE,
     DISPLAY_MOVIES,
     LOADING, REMOVE_FROM_WATCHED,
@@ -104,6 +104,11 @@ const moviesReducer = (state = initialState, action) => {
                 loading: true
             }
 
+        case CLEAR_SEARCH :
+            return {
+                ...state,
+                movies: []
+            }
         default:
             return state
     }

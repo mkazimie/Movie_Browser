@@ -13,8 +13,4 @@ store.subscribe(() => {
     saveState(store.getState());
 });
 
-
-
-
-
 export default store;
