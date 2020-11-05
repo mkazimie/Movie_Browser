@@ -8,7 +8,6 @@ const searchMovie = (text) => ({
     payload: text
 })
 
-
 const displayMovies = (data) => ({
     type: DISPLAY_MOVIES,
     payload: data
@@ -24,9 +23,8 @@ const setLoading = () => ({
 })
 
 const clearSearch = () => ({
-    type : CLEAR_SEARCH,
+    type: CLEAR_SEARCH,
 })
-
 
 const fetchMovies = (text) => dispatch => {
     axios.get(`http://www.omdbapi.com/?apikey=${OMDb_API_KEY}&s=${text}`

@@ -20,7 +20,6 @@ class SingleMovie extends Component {
         }
     }
 
-
     render() {
         const {loading, movie, movies} = this.props;
 
@@ -32,7 +31,10 @@ class SingleMovie extends Component {
                     <div className="col-md-4 card card-body">
                         <img
                             src={movie.Poster}
-                            onError={(e)=>{e.target.onError = null; e.target.src="https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png"}}
+                            onError={(e) => {
+                                e.target.onError = null;
+                                e.target.src = "https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png"
+                            }}
                             className="thumbnail" alt="Poster"/>
                     </div>
                     <div className="col-md-8">
@@ -68,40 +70,30 @@ class SingleMovie extends Component {
                             <h3>About </h3>
                             {movie.Plot}
                             <hr/>
-                            <a
-                                href={`https://www.imdb.com/title/${movie.imdbID}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn btn-primary"
-                            >
-                                View on IMDB
-                            </a>
+                            <a href={`https://www.imdb.com/title/${movie.imdbID}`}
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               className="btn btn-primary">
+                                View on IMDB</a>
                             <Link to={"/"} className="btn btn-default text-light">
                                 Go Back To Search
                             </Link>
                         </div>
                     </div>
                 </div>
-                {filteredMovies.length > 0 && <h2> Similar Movies: </h2> }
+                {filteredMovies.length > 0 && <h2> Similar Movies: </h2>}
                 <div className="row">
-                    {filteredMovies.length > 0 ? filteredMovies.slice(0, 6).map((item, index) => <MovieCard movie={item}
-                                                                                                 key={index}
-                                                                                                 rating={item.rating}/>) :
-                        null}
+                    {filteredMovies.length > 0 ? filteredMovies.slice(0, 6).map((item, index) =>
+                            <MovieCard movie={item} key={index} rating={item.rating}/>) : null}
                 </div>
             </div>
         )
-        let content = loading ? <div className="spinner"><Spinner animation="grow" variant="dark"/></div>
-            : movieInfo;
+        let content = loading ? <div className="spinner"><Spinner animation="grow" variant="dark"/></div> : movieInfo;
 
         return (
             <div>{content}</div>
-
         )
     }
-
 }
 
-
 export default SingleMovie;
-

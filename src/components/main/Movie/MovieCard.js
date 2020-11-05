@@ -8,7 +8,6 @@ import RatingWidget from "../../../containers/Home/RatingWidget";
 
 class MovieCard extends Component {
 
-
     handleOnClickAddWishlist = id => {
         this.props.addToWishlist(id);
         this.props.removeFromWatched(id);
@@ -22,10 +21,8 @@ class MovieCard extends Component {
         this.props.removeFromWatched(id);
     }
 
-
     render() {
         const {movie, wishlist, watched, rating} = this.props;
-
 
         let onWishlist = false;
         let alreadySeen = false;
@@ -37,11 +34,9 @@ class MovieCard extends Component {
             alreadySeen = true;
         }
 
-
         return (
             <div className="col-lg-4 col-sm-6 mb-5">
                 <div className="card card-body bg-dark  text-white text-center h-100">
-
                     <img className="mb-2 card-img-top mh-75"
                          src={movie.Poster}
                          onError={(e) => {
@@ -55,16 +50,12 @@ class MovieCard extends Component {
                     <h5 className="text-light card-title">
                         ({movie.Year})
                     </h5>
-
                     <Link className="btn btn-primary" to={`/movie/${movie.imdbID}`}>
                         Movie Details <FontAwesomeIcon icon={faChevronRight}/>
                     </Link>
-
                     <div className="mt-2">
                         <RatingWidget key={movie.imdbID} movie={movie} rating={rating}/>
                     </div>
-
-
                     {(onWishlist && !alreadySeen) &&
                     <button className="btn btn-dark text-white mt-2"
                             onClick={() => this.handleOnClickRemoveWishlist(movie.imdbID)}>
@@ -73,9 +64,7 @@ class MovieCard extends Component {
                                          icon={faEyeSlash}
                                          size={'1.5'}
                                          color={"#ff3333"}
-
                         /></button>}
-
                     {(!onWishlist && !alreadySeen) &&
                     <button className="btn btn-dark mt-2 text-white"
                             onClick={() => this.handleOnClickAddWishlist(movie.imdbID)}>
@@ -85,8 +74,6 @@ class MovieCard extends Component {
                                          size={'1.5'}
                                          color={'#00bfff'}
                         /></button>}
-
-
                     {alreadySeen &&
                     <button className="btn btn-light mt-2"
                             onClick={() => this.handleOnClickRemoveWatched(movie.imdbID)}>Remove from
@@ -97,12 +84,10 @@ class MovieCard extends Component {
                                          color={'#ff3333'}
                         />
                     </button>}
-
                 </div>
             </div>
         );
     }
 }
-
 
 export default MovieCard;

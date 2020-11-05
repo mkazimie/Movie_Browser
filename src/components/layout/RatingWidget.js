@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import StarRatingComponent from "react-star-ratings";
 
-
 class RatingWidget extends Component {
-
 
     changeRating = (newRating) => {
         const {movie} = this.props;
@@ -11,7 +9,6 @@ class RatingWidget extends Component {
         this.props.updateMovies(movie.imdbID, newRating);
         this.props.removeFromWishlist(movie.imdbID);
     }
-
 
     render() {
         const {rating} = this.props;
@@ -34,6 +31,5 @@ class RatingWidget extends Component {
         );
     }
 }
-
 
 export default RatingWidget;

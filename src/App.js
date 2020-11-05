@@ -9,8 +9,6 @@ import NotFound from "./components/layout/NotFound";
 import WatchedMoviesContainer from "./containers/Movies/WatchedMoviesContainer";
 import Landing from "./containers/Home/Landing";
 
-
-
 function App() {
     return (
         <Router>

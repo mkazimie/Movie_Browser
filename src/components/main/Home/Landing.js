@@ -4,7 +4,6 @@ import {Spinner} from "react-bootstrap";
 import MoviesContainer from "../../../containers/Movies/MoviesContainer";
 import "../../../static/App.css";
 
-
 class Landing extends Component {
 
     state = {
@@ -20,19 +19,18 @@ class Landing extends Component {
         const {clicked} = this.state;
         return (
             <div className="container">
-
-
                 {clicked ? <SearchForm/> :
-                    <div className="text-center mb-5"><button className="btn btn-primary btn-lg" onClick={this.handleClick}> New Search </button></div> }
+                    <div className="text-center mb-5">
+                        <button className="btn btn-primary btn-lg" onClick={this.handleClick}> New Search</button>
+                    </div>}
                 {loading ?
                     <div className="spinner">
-                    <Spinner animation="grow" variant="dark"/>
+                        <Spinner animation="grow" variant="dark"/>
                     </div>
                     : <MoviesContainer/>}
             </div>
         );
     }
 }
-
 
 export default Landing;

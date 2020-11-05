@@ -3,28 +3,28 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faReact, faImdb} from "@fortawesome/free-brands-svg-icons";
 import {NavLink} from "react-router-dom";
 
-
-
 const Navbar = () => {
 
     const active = {
-        color : '#00bfff',
-        fontWeight : 'bold'
+        color: '#00bfff',
+        fontWeight: 'bold'
     }
 
     return (
         <div>
             <nav className="navbar navbar-light bg-dark mb-5">
                 <div className="container">
-                <NavLink className="navbar-brand font-weight-bold text-white" to={"/"}>Movie Browser</NavLink>
+                    <NavLink className="navbar-brand font-weight-bold text-white" to={"/"}>Movie Browser</NavLink>
                     <div className="navbar-header">
-                        <NavLink exact className="navbar-brand text-lg brand-text px-2" activeStyle={active}  to={"/"}>
+                        <NavLink exact className="navbar-brand text-lg brand-text px-2" activeStyle={active} to={"/"}>
                             Search
                         </NavLink>
-                        <NavLink exact className="navbar-brand text-lg brand-text px-2" activeStyle={active}  to={"/movies/wishlist"}>
+                        <NavLink exact className="navbar-brand text-lg brand-text px-2" activeStyle={active}
+                                 to={"/movies/wishlist"}>
                             Wishlist
                         </NavLink>
-                        <NavLink exact className="navbar-brand text-lg brand-text px-2" activeStyle={active}  to={"/movies/watched"}>
+                        <NavLink exact className="navbar-brand text-lg brand-text px-2" activeStyle={active}
+                                 to={"/movies/watched"}>
                             Watched
                         </NavLink>
                     </div>

@@ -23,5 +23,4 @@ class WishlistMoviesContainer extends Component {
     }
 }
 
-
 export default WishlistMoviesContainer;

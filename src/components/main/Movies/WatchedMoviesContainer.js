@@ -23,5 +23,4 @@ class WatchedMoviesContainer extends Component {
     }
 }
 
-
 export default WatchedMoviesContainer;

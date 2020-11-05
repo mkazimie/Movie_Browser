@@ -12,15 +12,13 @@ class SearchForm extends Component {
     handleOnSubmit = e => {
         e.preventDefault();
         const {text} = this.props;
-        if (text.length < 3){
+        if (text.length < 3) {
             alert('You need to type in at least 3 characters')
         } else {
             this.props.fetchMovies(text);
             this.props.setLoading();
         }
     }
-
-
 
     render() {
         return (
